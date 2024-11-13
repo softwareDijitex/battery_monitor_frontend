@@ -1,12 +1,13 @@
-import React, { Suspense, useEffect } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
+import HandleGetDisplay from './service/displayService.js'
 import { CSpinner, useColorModes } from '@coreui/react-pro'
 import './scss/style.scss'
 
 // We use those styles to show code examples, you should remove them in your application.
 import './scss/examples.scss'
+import { displayData } from './service/displayService'
 
 // Containers
 const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'))
@@ -17,11 +18,18 @@ const Page404 = React.lazy(() => import('./views/pages/page404/Page404'))
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 
 const App = () => {
+  useEffect(() => {
+    loadData()
+  }, [])
   const { isColorModeSet, setColorMode } = useColorModes(
     'coreui-pro-react-admin-template-theme-light',
   )
   const storedTheme = useSelector((state) => state.theme)
 
+  const loadData = async () => {
+    console.log('inside effect to fetch data')
+    await HandleGetDisplay()
+  }
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.href.split('?')[1])
     const theme = urlParams.get('theme') && urlParams.get('theme').match(/^[A-Za-z0-9\s]+/)[0]

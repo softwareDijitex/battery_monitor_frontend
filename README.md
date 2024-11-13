@@ -133,3 +133,4 @@ your projects.
 You can buy a license on our website https://coreui.io
 
 run locally: npm run start
+

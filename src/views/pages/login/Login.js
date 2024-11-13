@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import setCustomerCode from '../../../utils/userState'
 import {
   CButton,
   CCard,
@@ -11,11 +12,36 @@ import {
   CInputGroup,
   CInputGroupText,
   CRow,
+  CToast,
+  CToastBody,
+  CToastClose,
 } from '@coreui/react-pro'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
+import { useNavigate } from 'react-router-dom'
+import { login, HandleLogin } from '../../../service/loginService'
 
 const Login = () => {
+  const [customerId, setCustomerId] = useState()
+  const [username, setUsername] = useState()
+  const [password, setPassword] = useState()
+  const [loginError, setLoginError] = useState(0)
+  const navigate = useNavigate()
+  const handleLogin = (event) => {
+    event.preventDefault()
+    const success = false
+    //todo: check with actual values from api / db
+    if (customerId == 240099 && username == 'newUser' && password == '1234') {
+      // HandleLogin()
+      setCustomerCode(customerId)
+      navigate('/smart-Table')
+    } else {
+      setLoginError(1)
+    }
+  }
+  const handleToastClose = (event) => {
+    setLoginError(0)
+  }
   return (
     <div className="bg-body-tertiary min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -24,20 +50,28 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <CForm>
+                  <CForm onSubmit={handleLogin}>
                     <h1>Login</h1>
                     <p className="text-body-secondary">Sign In to your account</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Customer code" autoComplete="customer code" />
+                      <CFormInput
+                        placeholder="Customer code"
+                        autoComplete="customer code"
+                        onChange={(e) => setCustomerId(e.target.value)}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-3">
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Username" autoComplete="username" />
+                      <CFormInput
+                        placeholder="Username"
+                        autoComplete="username"
+                        onChange={(e) => setUsername(e.target.value)}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -47,11 +81,12 @@ const Login = () => {
                         type="password"
                         placeholder="Password"
                         autoComplete="current-password"
+                        onChange={(e) => setPassword(e.target.value)}
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-                        <CButton color="primary" className="px-4">
+                        <CButton color="primary" className="px-4" type="submit">
                           Login
                         </CButton>
                       </CCol>
@@ -61,6 +96,15 @@ const Login = () => {
               </CCard>
             </CCardGroup>
           </CCol>
+        </CRow>
+        <br />
+        <CRow className="justify-content-center">
+          <CToast autohide={false} visible={loginError}>
+            <div className="d-flex">
+              <CToastBody>Please enter correct login details!</CToastBody>
+              <CToastClose className="me-2 m-auto" onClick={handleToastClose} />
+            </div>
+          </CToast>
         </CRow>
       </CContainer>
     </div>
