@@ -15,6 +15,7 @@ import CIcon from '@coreui/icons-react'
 import { AppSidebarNav } from './AppSidebarNav'
 
 import { logo } from 'src/assets/brand/logo'
+import inoweaveLogo from 'src/assets/brand/inoweaveLogo.png'
 import { sygnet } from 'src/assets/brand/sygnet'
 
 // sidebar nav config
@@ -37,10 +38,11 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarHeader className="border-bottom">
-        <CSidebarBrand as={NavLink} to="/">
-          <CIcon customClassName="sidebar-brand-full" icon={logo} height={32} />
-          <CIcon customClassName="sidebar-brand-narrow" icon={sygnet} height={32} />
-        </CSidebarBrand>
+        {/* <CSidebarBrand as={NavLink} to="/"> */}
+        <img src={inoweaveLogo} alt="My Image" style={{ width: '90%', maxWidth: '32' }} />
+        {/* <CIcon customClassName="sidebar-brand-full" icon={logo} height={32} /> */}
+        {/* <CIcon customClassName="sidebar-brand-narrow" icon={sygnet} height={32} /> */}
+        {/* </CSidebarBrand> */}
         <CCloseButton
           className="d-lg-none"
           onClick={() => dispatch({ type: 'set', sidebarShow: false })}

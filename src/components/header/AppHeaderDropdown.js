@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 import {
   CAvatar,
   CBadge,
@@ -23,11 +24,17 @@ import {
   cilAccountLogout,
 } from '@coreui/icons'
 import CIcon from '@coreui/icons-react'
+import { useNavigate } from 'react-router-dom'
 
 import avatar8 from './../../assets/images/avatars/8.jpg'
 
-const AppHeaderDropdown = () => {
+function AppHeaderDropdown({ setIsAuthenticated }) {
+  const navigate = useNavigate()
   const { t } = useTranslation()
+  const handleLogout = () => {
+    setIsAuthenticated(false)
+    navigate('/login')
+  }
   return (
     <CDropdown variant="nav-item">
       <CDropdownToggle className="py-2" caret={false}>
@@ -41,14 +48,17 @@ const AppHeaderDropdown = () => {
           <CIcon icon={cilUser} className="me-2" />
           {t('customer name')}
         </CDropdownItem>
-        <CDropdownDivider />
-        <CDropdownItem href="#">
+        {/* <CDropdownDivider />
+        <CDropdownItem href="#" onClick={handleLogout}>
           <CIcon icon={cilAccountLogout} className="me-2" />
           {t('logout')}
-        </CDropdownItem>
+        </CDropdownItem> */}
       </CDropdownMenu>
     </CDropdown>
   )
+}
+AppHeaderDropdown.propTypes = {
+  setIsAuthenticated: PropTypes.func.isRequired,
 }
 
 export default AppHeaderDropdown

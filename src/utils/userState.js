@@ -1,6 +1,6 @@
 // import React, { useState } from 'react'
 
-// const userLoginDetails = (initValue) => {
+// function UserLoginDetails(initValue) {
 //   const [customerCode, setCustomerCode] = useState()
 //   if (initValue) return customerCode
 //   return { customerCode, setCustomerCode }

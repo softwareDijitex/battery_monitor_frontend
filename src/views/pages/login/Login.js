@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import setCustomerCode from '../../../utils/userState'
 import {
   CButton,
@@ -21,7 +22,7 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import { useNavigate } from 'react-router-dom'
 import { login, HandleLogin } from '../../../service/loginService'
 
-const Login = () => {
+function Login({ setIsAuthenticated }) {
   const [customerId, setCustomerId] = useState()
   const [username, setUsername] = useState()
   const [password, setPassword] = useState()
@@ -33,7 +34,8 @@ const Login = () => {
     //todo: check with actual values from api / db
     if (customerId == 240099 && username == 'newUser' && password == '1234') {
       // HandleLogin()
-      setCustomerCode(customerId)
+      // setCustomerCode(customerId)
+      setIsAuthenticated(true)
       navigate('/smart-Table')
     } else {
       setLoginError(1)
@@ -109,6 +111,11 @@ const Login = () => {
       </CContainer>
     </div>
   )
+}
+
+// Add PropTypes validation
+Login.propTypes = {
+  setIsAuthenticated: PropTypes.func.isRequired,
 }
 
 export default Login
