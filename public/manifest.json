@@ -3,7 +3,7 @@
   "name": "CoreUI-React sample",
   "icons": [
     {
-      "src": "./assets/img/favicon.png",
+      "src": "./assets/brand/cropped-Inoweave_Logo-32x32.png",
       "sizes": "100x100",
       "type": "image/png"
     }

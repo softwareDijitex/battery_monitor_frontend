@@ -28,8 +28,10 @@ function App() {
   const storedTheme = useSelector((state) => state.theme)
 
   const loadData = async () => {
+    // if (isAuthenticated) {
     console.log('inside effect to fetch data')
     await HandleGetDisplay()
+    // } else console.log('not authenticated')
   }
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.href.split('?')[1])
@@ -65,10 +67,6 @@ function App() {
             name="Home"
             element={isAuthenticated ? <DefaultLayout /> : <Navigate to="/" />}
           />
-          {/* <Route
-            path="/dashboard"
-            element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />}
-          /> */}
         </Routes>
       </Suspense>
     </HashRouter>

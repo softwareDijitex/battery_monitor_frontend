@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import setCustomerCode from '../../../utils/userState'
+import HandleGetDisplay from '../../../service/displayService.js'
 import {
   CButton,
   CCard,
@@ -22,6 +23,8 @@ import { cilLockLocked, cilUser } from '@coreui/icons'
 import { useNavigate } from 'react-router-dom'
 import { login, HandleLogin } from '../../../service/loginService'
 
+export let CustomerId
+
 function Login({ setIsAuthenticated }) {
   const [customerId, setCustomerId] = useState()
   const [username, setUsername] = useState()
@@ -32,15 +35,25 @@ function Login({ setIsAuthenticated }) {
     event.preventDefault()
     const success = false
     //todo: check with actual values from api / db
-    if (customerId == 240099 && username == 'newUser' && password == '1234') {
+    if (customerId == 240001 && username == 'Admin' && password == 'Admin@123') {
       // HandleLogin()
       // setCustomerCode(customerId)
+      // CustomerId = customerId
       setIsAuthenticated(true)
+      // useEffect(() => {
+      // loadData()
+      // }, [])
       navigate('/smart-Table')
     } else {
       setLoginError(1)
     }
   }
+
+  const loadData = async () => {
+    console.log('inside effect to fetch data')
+    await HandleGetDisplay()
+  }
+
   const handleToastClose = (event) => {
     setLoginError(0)
   }

@@ -1,3 +1,4 @@
+import { element } from 'prop-types'
 import React from 'react'
 import { Translation } from 'react-i18next'
 
@@ -53,6 +54,7 @@ import { Translation } from 'react-i18next'
 // const Toasts = React.lazy(() => import('./views/notifications/toasts/Toasts'))
 
 const SmartTable = React.lazy(() => import('./views/smart-table/SmartTable'))
+const ShiftDetail = React.lazy(() => import('./views/smart-table/ShiftDetail'))
 // const Report = React.lazy(() => import('./views/overview/Report'))
 
 // Plugins
@@ -168,6 +170,7 @@ const routes = [
   // },
   // { path: '/plugins/google-maps', name: 'GoogleMaps', element: GoogleMaps },
   { path: '/smart-table', name: 'Display Report', element: SmartTable },
+  { path: '/shift-detail', name: 'Shift Report', element: ShiftDetail },
   // { path: '/overview', name: 'Overview', element: Report },
   // { path: '/widgets', name: <Translation>{(t) => t('widgets')}</Translation>, element: Widgets },
   // {

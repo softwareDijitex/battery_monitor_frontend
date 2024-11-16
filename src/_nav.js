@@ -39,6 +39,15 @@ const _nav = [
     },
     to: '/smart-table',
   },
+  {
+    component: CNavItem,
+    name: 'Shift Report',
+    icon: <CIcon icon={cilChartLine} customClassName="nav-icon" />,
+    badge: {
+      color: 'danger-gradient',
+    },
+    to: '/shift-detail',
+  },
 
   // {
   //   component: CNavTitle,

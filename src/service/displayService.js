@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { getDisplayData } from '../utils/endpointConstants.js'
 // import { userLoginDetails } from '../utils/userState.js'
+// import { CustomerId } from 'src/views/pages/login/Login.js'
 
 export let displayData = ''
 
@@ -11,7 +12,7 @@ const HandleGetDisplay = async (e) => {
   // const [customerCode, setCustomerCode] = userLoginDetails()
   await axios({
     url: getDisplayData,
-    params: { customerCode: '240099' },
+    params: { customerCode: 240001 },
     method: 'GET',
     headers: {
       'Content-type': 'application/json',

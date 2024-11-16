@@ -28,11 +28,12 @@ import { useNavigate } from 'react-router-dom'
 
 import avatar8 from './../../assets/images/avatars/8.jpg'
 
-function AppHeaderDropdown({ setIsAuthenticated }) {
+// function AppHeaderDropdown({ setIsAuthenticated }) {
+const AppHeaderDropdown = () => {
   const navigate = useNavigate()
   const { t } = useTranslation()
   const handleLogout = () => {
-    setIsAuthenticated(false)
+    // setIsAuthenticated(false)
     navigate('/login')
   }
   return (
@@ -44,10 +45,10 @@ function AppHeaderDropdown({ setIsAuthenticated }) {
         <CDropdownHeader className="bg-body-secondary text-body-secondary fw-semibold my-2">
           {t('Inoweave')}
         </CDropdownHeader>
-        <CDropdownItem href="#">
+        {/* <CDropdownItem href="#">
           <CIcon icon={cilUser} className="me-2" />
           {t('customer name')}
-        </CDropdownItem>
+        </CDropdownItem> */}
         {/* <CDropdownDivider />
         <CDropdownItem href="#" onClick={handleLogout}>
           <CIcon icon={cilAccountLogout} className="me-2" />
@@ -57,8 +58,8 @@ function AppHeaderDropdown({ setIsAuthenticated }) {
     </CDropdown>
   )
 }
-AppHeaderDropdown.propTypes = {
-  setIsAuthenticated: PropTypes.func.isRequired,
-}
+// AppHeaderDropdown.propTypes = {
+//   setIsAuthenticated: PropTypes.func.isRequired,
+// }
 
 export default AppHeaderDropdown
