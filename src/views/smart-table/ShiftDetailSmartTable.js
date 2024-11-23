@@ -115,7 +115,7 @@ const ShiftDetailSmartTable = () => {
       case 'Blue':
         return 'info'
       default:
-        return 'primary'
+        return 'success'
     }
   }
   const toggleDetails = (index) => {

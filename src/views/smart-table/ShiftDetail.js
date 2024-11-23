@@ -153,9 +153,9 @@ const ShiftReport = () => {
         return 'Red'
       case '2':
         return 'Yellow'
-      case '3':
-        return 'Green'
       case '4':
+        return 'Green'
+      case '8':
         return 'Blue'
     }
   }
